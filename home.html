@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital A - Home</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+            plugins: [require('daisyui')],
+            daisyui: {
+                themes: ["cupcake"],
+            },
+        }
+    </script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+
+    <nav class="navbar bg-base-300 shadow-md rounded-b-lg p-2">
+        <div class="navbar-start">
+            <a class="btn btn-ghost text-xl text-primary font-bold">Hospital A - Welcome</a>
+        </div>
+        <div class="navbar-end">
+            <ul class="menu menu-horizontal px-1 hidden md:flex">
+                <li><a href="home.html" class="btn btn-primary btn-sm text-white"><i data-lucide="home" class="w-4 h-4 mr-1"></i> Home</a></li>
+                <li><a href="index.html" class="btn btn-ghost btn-sm text-primary"><i data-lucide="calendar" class="w-4 h-4 mr-1"></i> Appointment</a></li>
+            </ul>
+            <div class="flex items-center space-x-2 ml-4">
+                <a class="btn btn-ghost btn-sm text-sm"><i data-lucide="log-in" class="w-4 h-4 mr-1"></i> Login</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="hero min-h-[70vh] bg-base-200">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold text-primary">Your Health, Our Priority.</h1>
+          <p class="py-6">Welcome to **Hospital A**. We are dedicated to providing excellent medical care and a comfortable experience for all our patients.</p>
+          <a href="index.html" class="btn btn-lg btn-primary shadow-lg">
+              <i data-lucide="calendar-plus" class="w-5 h-5 mr-2"></i> Book Your Appointment Now
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>

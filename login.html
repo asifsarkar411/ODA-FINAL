@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital A - Patient Login</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+            plugins: [require('daisyui')],
+            daisyui: {
+                themes: ["cupcake"],
+            },
+        }
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans flex flex-col">
+
+    <!-- Responsive Navigation Bar -->
+    <nav class="navbar bg-base-300 shadow-md rounded-b-lg p-2">
+        <div class="navbar-start">
+            <a class="btn btn-ghost text-lg sm:text-xl text-primary font-bold">Hospital A - Patient Portal</a>
+        </div>
+        <div class="navbar-end">
+            <!-- Desktop Menu -->
+            <ul class="menu menu-horizontal px-1 hidden md:flex">
+                <li><a href="home.html" class="btn btn-ghost btn-sm"><i data-lucide="home" class="w-4 h-4 mr-1"></i> Home</a></li>
+                <li><a href="index.html" class="btn btn-ghost btn-sm"><i data-lucide="calendar" class="w-4 h-4 mr-1"></i> Appointment</a></li>
+            </ul>
+            <!-- Login Button is now active state -->
+            <div class="flex items-center space-x-2 ml-2 sm:ml-4">
+                <a href="login.html" class="btn btn-primary btn-sm text-white text-xs sm:text-sm"><i data-lucide="log-in" class="w-4 h-4 mr-1"></i> Login</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content Area - Centered Login Form -->
+    <main class="flex-grow flex justify-center items-center p-4">
+        <div class="w-full max-w-md">
+            
+            <!-- Form Header -->
+            <div class="bg-primary text-white p-4 rounded-t-lg shadow-xl text-center">
+                <h2 class="text-2xl font-semibold">Welcome Back</h2>
+            </div>
+
+            <!-- Login Form Card -->
+            <div class="card bg-white shadow-2xl rounded-b-lg p-6 sm:p-8">
+                <form id="loginForm" class="space-y-6">
+                    
+                    <!-- Email/Username Input -->
+                    <div class="form-control text-left">
+                        <label class="label"><span class="label-text font-semibold">Email or Username</span></label>
+                        <input id="username" type="text" placeholder="you@hospitala.com" class="input input-bordered w-full" required />
+                    </div>
+                    
+                    <!-- Password Input -->
+                    <div class="form-control text-left">
+                        <label class="label"><span class="label-text font-semibold">Password</span></label>
+                        <input id="password" type="password" placeholder="Enter your password" class="input input-bordered w-full" required />
+                    </div>
+
+                    <!-- Remember Me and Forgot Password Links -->
+                    <div class="flex justify-between items-center text-sm">
+                        <label class="label cursor-pointer space-x-2 p-0">
+                            <input type="checkbox" class="checkbox checkbox-primary checkbox-sm" />
+                            <span class="label-text text-gray-600">Remember Me</span>
+                        </label>
+                        <a href="#" class="link link-hover link-primary text-sm">Forgot Password?</a>
+                    </div>
+                    
+                    <!-- Login Button -->
+                    <div class="form-control mt-8">
+                        <button type="submit" class="btn btn-primary btn-lg shadow-lg hover:shadow-xl transition duration-300 w-full">
+                            <i data-lucide="log-in" class="w-5 h-5 mr-2"></i> Log In
+                        </button>
+                    </div>
+                </form>
+
+                <div class="divider">OR</div>
+
+                <!-- Signup Link -->
+                <div class="text-center">
+                    <p class="text-sm text-gray-600">
+                        New patient? 
+                        <a href="#" class="link link-hover link-secondary font-semibold">Create an Account</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER (Optional, minimal for a form page) -->
+    <footer class="footer footer-center p-4 bg-base-300 text-base-content text-sm">
+      <aside>
+        <p>Copyright © 2025 - All rights reserved by Hospital A</p>
+      </aside>
+    </footer>
+
+
+    <!-- Initialize lucide icons -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
+
+            // Simple form submission handler (prevent default action)
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // In a real app, you would send data to the server here.
+                console.log("Login attempt submitted.");
+                // For demonstration, you might redirect or show a success/error message
+                // For now, let's show a toast message (since alert() is forbidden)
+                alert("Login attempted! (Placeholder action)");
+            });
+
+            // Function to display a toast notification (as alert() is forbidden)
+            function showToast(message, type = 'info') {
+                const toastContainer = document.createElement('div');
+                toastContainer.classList.add('alert', type === 'error' ? 'alert-error' : 'alert-success');
+                toastContainer.innerHTML = `<span>${message}</span>`;
+
+                const container = document.getElementById('toastContainer');
+                if (container) {
+                    container.appendChild(toastContainer);
+                    setTimeout(() => {
+                        toastContainer.remove();
+                    }, 4000);
+                }
+            }
+
+            // Dummy alert function override to use toast
+            window.alert = function(message) {
+                showToast(message, 'info');
+            };
+        });
+    </script>
+
+</body>
+</html>
